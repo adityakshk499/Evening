@@ -6,10 +6,9 @@ import Trending from "./pages/Trending";
 import Watchlist from "./pages/Watchlist";
 import Top10 from "./pages/Top10";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ErrorElement from "./pages/ErrorElement";
-import Footer from "./components/Footer";
 
 const Applayout = () => {
   return (
