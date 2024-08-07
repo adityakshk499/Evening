@@ -7,7 +7,7 @@ import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="bottom-2 border rounded-xl  shadow-lg w-full absolute">
+    <div className=" border rounded-xl  shadow-lg w-full ">
       <div className="flex justify-between px-4 items-center ">
         <Link to={"/"}>
           {" "}
