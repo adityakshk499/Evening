@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function App() {
   const [likes, setLikes] = useState(0);
-  console.log(likes);
+  likes;
   function increaslikes() {
     setLikes(likes + 1);
   }
