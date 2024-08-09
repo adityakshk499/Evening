@@ -2,22 +2,42 @@ import React from "react";
 import { MdOutlineStarRate } from "react-icons/md";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import { FaArrowTrendUp } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Name } from "../index";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { handleAddCoins } from "../store/watchlistSlice";
 const Card = ({ item, checker }) => {
+  const data = useSelector((store) => store.watchlistSlice);
+  const dispatch = useDispatch();
+  console.log(data);
+  function addcoinstowatchlist() {
+    dispatch(handleAddCoins(item));
+  }
+
   return (
     <div className="w-full mt-5  bg-cyan-100 border shadow-lg gap-5 rounded-md py-4 px-5 flex flex-col">
       <div className="flex gap-4 items-center ">
-        <img
-          className="w-1/6"
-          src={checker === "top10" ? item.thumb : item.image}
-          alt="Crypto symbol"
-        />
+        <abbr className="w-1/6" title="Click here to know more.">
+          <Link to={`/coin/${item.id}`}>
+            {" "}
+            <img
+              src={checker === "top10" ? item.thumb : item.image}
+              alt="Crypto symbol"
+            />
+          </Link>
+        </abbr>
         <div className="flex flex-col w-full">
           <h2 className="text-[20px] font-bold">{item.name}</h2>
           <h2 className="text-[18px] font-semibold text-gray-500">
             {item.symbol}
           </h2>
         </div>
-        <MdOutlineStarRate className="text-[50px]" />
+        <MdOutlineStarRate
+          onClick={addcoinstowatchlist}
+          className="text-[50px]"
+        />
       </div>
 
       <div className="flex items-center gap-4 ">

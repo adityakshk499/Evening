@@ -18,8 +18,6 @@ const Top10 = () => {
       .catch((error) => {
         console.log(error);
       });
-
-    console.log(Data);
   }, []);
 
   return data.length === 0 ? (
