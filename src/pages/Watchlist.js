@@ -1,16 +1,19 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import Cards from "../components/Cards";
 
-function Watchlist() {
-  var data = useSelector((store) => store.watchlistSlice);
-  console.log(data);
-  return data.length == 0 ? (
-    <div> No data </div>
+const Watchlist = () => {
+  const watchlistData = useSelector((store) => store.watchlist);
+  console.log(watchlistData);
+
+  return watchlistData.length === 0 ? (
+    <div>No data in wathlist </div>
   ) : (
     <div>
-      <Cards apiData={data} />
+      {" "}
+      <Cards apiData={watchlistData} />{" "}
     </div>
   );
-}
+};
 
 export default Watchlist;

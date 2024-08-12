@@ -3,17 +3,29 @@ import { MdOutlineStarRate } from "react-icons/md";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { Name } from "../index";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { handleAddCoins } from "../store/watchlistSlice";
+import { handleAddcoin, handleremovecoin } from "../store/watchlistSlice";
+import { MdOutlineStar } from "react-icons/md";
 const Card = ({ item, checker }) => {
-  const data = useSelector((store) => store.watchlistSlice);
+  const watchlistData = useSelector(function (store) {
+    return store.watchlist;
+  });
+  const isPresent = (element, array) =>
+    array.some((obj) => JSON.stringify(obj) === JSON.stringify(element));
+
+  const starRenderingLogic = isPresent(item, watchlistData);
+
+  console.log(starRenderingLogic);
+
   const dispatch = useDispatch();
-  console.log(data);
-  function addcoinstowatchlist() {
-    dispatch(handleAddCoins(item));
+
+  function addCoin() {
+    dispatch(handleAddcoin(item));
+  }
+
+  function removeCoin() {
+    dispatch(handleremovecoin(item));
   }
 
   return (
@@ -34,10 +46,11 @@ const Card = ({ item, checker }) => {
             {item.symbol}
           </h2>
         </div>
-        <MdOutlineStarRate
-          onClick={addcoinstowatchlist}
-          className="text-[50px]"
-        />
+        {!starRenderingLogic ? (
+          <MdOutlineStarRate onClick={addCoin} className="text-[50px]" />
+        ) : (
+          <MdOutlineStar onClick={removeCoin} className="text-[50px]" />
+        )}
       </div>
 
       <div className="flex items-center gap-4 ">

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useRef } from "react";
 
 const CoinByIdData = () => {
+  console.log(useParams());
   const { id } = useParams();
   const [like, setLike] = useState(0);
   const [data, setData] = useState({});

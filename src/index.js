@@ -12,21 +12,21 @@ import ErrorElement from "./pages/ErrorElement";
 import CoinByIdData from "./pages/CoinByIdData";
 import { createContext } from "react";
 import { Provider } from "react-redux";
-import { store } from "./store/store";
+import { cryptoStore } from "./store/cryptoStore";
 
 export const Name = createContext();
 
 const Applayout = () => {
   return (
-    <div>
-      <Provider store={store}>
+    <Provider store={cryptoStore}>
+      <div>
         <Name.Provider value={"aditya"}>
           <Navbar />
           <Outlet />
           <Footer />
         </Name.Provider>
-      </Provider>
-    </div>
+      </div>
+    </Provider>
   );
 };
 
